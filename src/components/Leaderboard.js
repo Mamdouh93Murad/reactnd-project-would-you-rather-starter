@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component} from 'react'
 import Nav from './Nav'
 import { connect } from 'react-redux'
 // import {  useHistory } from "react-router-dom";
@@ -14,7 +14,7 @@ export class Leaderboard extends Component {
                 <div style={{textAlign : 'center', border:'1px, solid, black'}}>
                 {users.map((user) =>
                 (
-                    <div >
+                    <div key={user.id}>
                         <img style={{width:'10%'}}src={user.avatarURL} alt={`${user.name}'s avatar`} className="avatar"/>
                         <div className="leaderboard-details">
                             <h2>{user.name}</h2>

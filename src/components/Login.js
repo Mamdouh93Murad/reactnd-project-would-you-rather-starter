@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Nav from './Nav'
 import { setAuthedUser } from '../actions/authedUser'
 import { connect } from 'react-redux'
-import {Link, withRouter} from 'react-router-dom'
+// import {Link, withRouter} from 'react-router-dom'
 import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
