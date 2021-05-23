@@ -7,12 +7,16 @@ export default class HomePage extends Component {
                 <Nav />
                 <h1 style={{textAlign : 'center'}}>Home Page</h1>
                 <div style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
-                    <h2>
-                        Unanswered Questions
-                    </h2>
-                    <h2>
-                        Answered Questions
-                    </h2>
+                    <div>
+                        <h2>
+                            Unanswered Questions
+                        </h2>
+                    </div>
+                    <div>
+                        <h2>
+                            Answered Questions
+                        </h2>
+                    </div>
                 </div>
             </div>
         )
