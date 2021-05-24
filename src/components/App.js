@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Login from './Login'
@@ -14,8 +14,7 @@ import Question from './Question'
 class App extends Component {
   
 
-    componentDidMount()
-    {
+    componentDidMount(){
         this.props.dispatch(handleInitialData())
     }
 

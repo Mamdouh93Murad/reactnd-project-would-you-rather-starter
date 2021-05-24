@@ -14,7 +14,9 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: "https://www.w3schools.com/w3css/img_avatar2.png" ,
+    // avatarURL: "https://www.w3schools.com/w3css/img_avatar2.png" ,
+    avatarURL: "https://media.istockphoto.com/vectors/profile-icon-male-avatar-portrait-casual-person-vector-id530827853?k=6&m=530827853&s=612x612&w=0&h=FYnhkmLYaHjYSyTva1A72eDj5yu3sU7TUXg_BsH1Dfw=",
+
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',

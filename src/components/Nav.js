@@ -6,7 +6,6 @@ export class Nav extends Component {
     LogOut = (e) => {
         e.preventDefault()
         this.props.dispatch(unsetAuthedUser())
-        // window.location.href = "http://localhost:3000/";
         this.props.history.push('/')
     }
     render() {

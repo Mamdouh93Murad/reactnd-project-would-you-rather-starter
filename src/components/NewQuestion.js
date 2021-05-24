@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import Nav from './Nav'
 import {connect} from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
+
 export class NewQuestion extends Component {
     state = {
         OptionOne:'',
         OptionTwo:'',
+        toHome: false
       }
       handleChange = (event) => {
         if (event.target.name === 'OptionOne') {
@@ -19,8 +22,19 @@ export class NewQuestion extends Component {
         const{dispatch} = this.props
         dispatch(handleAddQuestion(this.state.OptionOne, this.state.OptionTwo))
         
-      }
+        this.setState(() => ({
+            OptionOne: '',
+             OptionTwo:'',
+            toHome: true
+          }))
+        }
+
+          
     render() {
+        const {OptionOne, OptionTwo, toHome} = this.state
+        if (toHome === true) {
+            return <Redirect to='/'/>
+          } else {
         return (
             <div>
                 <Nav />
@@ -35,7 +49,7 @@ export class NewQuestion extends Component {
                             className="question-input"
                             type="text"
                             placeholder="Please Enter Option One"
-                            value={this.state.OptionOne}
+                            value={OptionOne}
                          onChange={this.handleChange}
                          />   
                     </div>
@@ -46,18 +60,18 @@ export class NewQuestion extends Component {
                             className="question-input"
                             type="text"
                             placeholder="Please Enter Option Two"
-                            value={this.state.OptionTwo}
+                            value={OptionTwo}
                             onChange={this.handleChange}
                         />   
                     </div>
                 </div>
                 <div style={{textAlign:'center'}}>
-                    <button disabled={this.state.OptionOne.length === 0 && this.state.OptionTwo.length === 0} type="Submit" onClick={this.handleSubmit}>Submit</button>
+                    <button disabled={this.state.OptionOne.length === 0 && this.state.OptionTwo.length === 0} type="Submit"  onClick={this.handleSubmit}>Submit</button>
                 </div>
             </div>
             
         )
     }
 }
-
+}
 export default connect()(NewQuestion)
