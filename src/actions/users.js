@@ -21,16 +21,17 @@ export function addUser (user) {
     }
   }
 
-  export function handleAddUser(id, name, avatarURL) {
+  export function handleAddUser(id, name,password, avatarURL) {
     return (dispatch) => {
       
       dispatch(showLoading())
-      dispatch(addUser({id, name, avatarURL}))
+      dispatch(addUser({id, name,password, avatarURL}))
       dispatch(setAuthedUser(id))
       dispatch(hideLoading())
       return saveUser({
         id,
         name,
+        password,
         avatarURL,
       })
       

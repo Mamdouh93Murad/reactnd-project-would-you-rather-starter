@@ -23,7 +23,7 @@ export class HomePage extends Component {
         }
     }
     render() { 
-        const { questions } = this.props
+        const {authedUser, questions } = this.props
         
         return (
             <div>
@@ -40,18 +40,31 @@ export class HomePage extends Component {
                 {this.state.status === false ? 
                 (
                     <h1 style={{textAlign : 'center'}}>Unanswered</h1>
+                    ,questions.map((question) =>
+                        !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser) ?
+                            question.timestamp
+                            :
+                            null
+                    )
+                    
                 )
             :
-            (<h1 style={{textAlign : 'center'}}>Answered</h1>)}
+            (<h1 style={{textAlign : 'center'}}>Answered</h1>,questions.map((question) =>
+            question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser) ?
+                question.timestamp
+                :
+                null
+        ))}
+
             </div>
             </div>
         )
     }
 }
 
-function mapStateToProps({questions}) {
+function mapStateToProps({authedUser, questions}) {
     
-    return {questions: Object.values(questions).sort((a, b) => b.timestamp - a.timestamp)}
+    return {authedUser, questions: Object.values(questions).sort((a, b) => b.timestamp - a.timestamp)}
     
   }
 export default connect(mapStateToProps)(HomePage)

@@ -16,6 +16,7 @@ export default function users(state = {}, action)
                   [action.user.id]: {
                     id : action.user.id,
                     name : action.user.name,
+                    password : action.user.password,
                     avatarURL : action.user.avatarURL,
                     answers: {},
                     questions: [],

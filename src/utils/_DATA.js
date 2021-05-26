@@ -207,7 +207,7 @@ export function _saveUser (user)
 {
     return new Promise((res, rej) =>
     {
-        const {id, name, avatarURL} = user
+        const {id, name, password, avatarURL} = user
         setTimeout(() => {
             users = {
                 ...users,
@@ -215,6 +215,7 @@ export function _saveUser (user)
                 {
                     id, 
                     name,
+                    password,
                     avatarURL,
                     answers : {},
                     questions: []

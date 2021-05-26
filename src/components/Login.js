@@ -10,6 +10,7 @@ export class Login extends Component {
     state = {
         id:'',
         name:'',
+        password : '',
         avatarURL:'',
         toHome: false
       }
@@ -18,6 +19,8 @@ export class Login extends Component {
             this.setState({id:event.target.value})
           } else if (event.target.name === 'name'){
             this.setState({name: event.target.value})
+          } else if (event.target.name === 'password'){
+            this.setState({password: event.target.value})
           }
           else if (event.target.name === 'avatarURL'){
             this.setState({avatarURL: event.target.value})
@@ -27,11 +30,12 @@ export class Login extends Component {
       handleSubmitUp = (event) => {
         event.preventDefault()
         const{dispatch} = this.props
-        dispatch(handleAddUser(this.state.id, this.state.name, this.state.avatarURL))
+        dispatch(handleAddUser(this.state.id, this.state.name, this.state.password, this.state.avatarURL))
         
         this.setState(() => ({
             id: '',
             name:'',
+            password : '',
             avatarURL:'',
             toHome: true
           }))
@@ -94,6 +98,17 @@ export class Login extends Component {
                         type="text"
                         placeholder="Real Name"
                         value={this.state.name}
+                        onChange={this.handleChangeUp}
+                    />
+                </div>
+                <div className="new-user">
+                    <input
+                        style={{margin:'5px'}}
+                        name ='password'
+                        className="user-input"
+                        type="password"
+                        placeholder="Password"
+                        value={this.state.password}
                         onChange={this.handleChangeUp}
                     />   
                 </div>
