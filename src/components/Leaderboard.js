@@ -1,16 +1,16 @@
 import React, { Component} from 'react'
-import Nav from './Nav'
+
 import { connect } from 'react-redux'
+
 // import {  useHistory } from "react-router-dom";
 export class Leaderboard extends Component {
     render() {
-        
         const {users} = this.props
         return (
-            
             <div>
-            <Nav />
-                <h1 style={{textAlign : 'center'}}>Leaderboard</h1>
+           
+            
+            <h1 style={{textAlign : 'center'}}>Leaderboard</h1>
                 <div style={{textAlign : 'center', border:'1px, solid, black'}}>
                 {users.map((user) =>
                 (
@@ -25,6 +25,7 @@ export class Leaderboard extends Component {
                     </div>
                 ))}
             </div>
+            
             </div>
         )
     }

@@ -6,7 +6,7 @@ export class Nav extends Component {
     LogOut = (e) => {
         e.preventDefault()
         this.props.dispatch(unsetAuthedUser())
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
     render() {
        
@@ -18,8 +18,7 @@ export class Nav extends Component {
                 :
                 <ul style={{display:'flex', 'justifyContent': 'space-around'}}>
                     <li key='HomePage'><Link to='/'><span>Home Page</span></Link></li>
-                    <li key='Questions'><Link to = '/Questions'><span>Questions</span></Link></li>
-                    <li key='NewQuestions'><Link to = '/Add'><span>New Question</span></Link></li>
+                    <li key='NewQuestions'><Link to = '/New'><span>New Question</span></Link></li>
                     <li key='Leaderboard'><Link to = '/Leaderboard'><span>Leaderboard</span></Link></li>
                     <li key={this.props.loggedin}><span>Hello, {this.props.loggedin}!</span></li>
                     <li key='Login'><Link to = '/Login' onClick={this.LogOut}><span>Logout</span></Link></li>

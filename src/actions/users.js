@@ -1,4 +1,9 @@
+import { showLoading, hideLoading } from 'react-redux-loading'
+import { saveUser } from "../utils/api"
+import { setAuthedUser } from './authedUser'
+
 export const RECEIVE_USERS = 'RECEIVE_USERS'
+export const ADD_USER = 'ADD_USER'
 
 
 export function receiveUsers(users)
@@ -8,3 +13,26 @@ export function receiveUsers(users)
         users,
     }
 }
+
+export function addUser (user) {
+    return {
+      type: ADD_USER,
+      user,
+    }
+  }
+
+  export function handleAddUser(id, name, avatarURL) {
+    return (dispatch) => {
+      
+      dispatch(showLoading())
+      dispatch(addUser({id, name, avatarURL}))
+      dispatch(setAuthedUser(id))
+      dispatch(hideLoading())
+      return saveUser({
+        id,
+        name,
+        avatarURL,
+      })
+      
+    }
+  }

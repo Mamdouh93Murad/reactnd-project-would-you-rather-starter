@@ -1,5 +1,6 @@
+
 import {_getUsers, _getQuestions, _saveQuestion,
-     _saveQuestionAnswer, _formatQuestion, _generateUID} from './_DATA'
+     _saveQuestionAnswer, _formatQuestion, _generateUID, _saveUser} from './_DATA'
 
 
 export function getUsers()
@@ -44,3 +45,10 @@ export function getInitialData ()
           questions,
         }))
 }
+
+
+export function saveUser(user)
+{
+    return _saveUser(user)
+}
+  

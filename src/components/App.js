@@ -7,13 +7,10 @@ import LoadingBar from 'react-redux-loading'
 import Leaderboard from './Leaderboard'
 import HomePage from './Homepage'
 import NewQuestion from './NewQuestion'
-import Questions from './Questions'
 import Question from './Question'
-
+import Nav from './Nav'
 
 class App extends Component {
-  
-
     componentDidMount(){
         this.props.dispatch(handleInitialData())
     }
@@ -25,13 +22,13 @@ class App extends Component {
           <Router>
         <Fragment>
           <LoadingBar />
+          <Nav />
           <div className='container'>
           {this.props.loading === true
               ? <Login/>
               : <div>
                   <Route exact path='/' component={HomePage} />
-                  <Route path='/Questions' component={Questions} />
-                  <Route path='/Add' component={NewQuestion} />
+                  <Route path='/New' component={NewQuestion} />
                   <Route path = '/Leaderboard' component={Leaderboard} />
                   <Route path = '/Question/:id' component={Question} />
                 </div>}

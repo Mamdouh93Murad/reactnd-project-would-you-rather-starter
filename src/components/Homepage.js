@@ -1,21 +1,38 @@
 import React, { Component } from 'react'
-import Nav from './Nav'
+
 export default class HomePage extends Component {
-    render() {
+    state = 
+    {
+        status : false
+    }
+    handleChange = (event) =>
+    {
+        if(event.target.id === 'unanswered')
+        {
+            this.setState(() => ({
+                status: false
+            }))
+            console.log(this.state.status)
+        }
+        else
+        {
+            this.setState(() => ({
+                status : true
+            }))
+            console.log(this.state.status)
+        }
+    }
+    render() { 
         return (
             <div>
-                <Nav />
-                <h1 style={{textAlign : 'center'}}>Home Page</h1>
+                
+                <h1 style={{textAlign : 'center', textDecoration: 'underline'}}>Home Page</h1>
                 <div style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                     <div>
-                        <h2>
-                            Unanswered Questions
-                        </h2>
+                        <button id="unanswered" onClick={this.handleChange}>Unanswered Questions</button>
                     </div>
                     <div>
-                        <h2>
-                            Answered Questions
-                        </h2>
+                        <button id="answered" onClick={this.handleChange}>Answered Questions</button>
                     </div>
                 </div>
             </div>
