@@ -8,8 +8,7 @@ export class Leaderboard extends Component {
         const {users} = this.props
         return (
             <div>
-           
-            
+
             <h1 style={{textAlign : 'center'}}>Leaderboard</h1>
                 <div style={{textAlign : 'center', border:'1px, solid, black'}}>
                 {users.map((user) =>

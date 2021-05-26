@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
-export default class HomePage extends Component {
+import { connect } from 'react-redux'
+export class HomePage extends Component {
     state = 
     {
         status : false
@@ -23,6 +23,8 @@ export default class HomePage extends Component {
         }
     }
     render() { 
+        const { questions } = this.props
+        
         return (
             <div>
                 <h1 style={{textAlign : 'center', textDecoration: 'underline'}}>Home Page</h1>
@@ -46,3 +48,10 @@ export default class HomePage extends Component {
         )
     }
 }
+
+function mapStateToProps({questions}) {
+    
+    return {questions: Object.values(questions).sort((a, b) => b.timestamp - a.timestamp)}
+    
+  }
+export default connect(mapStateToProps)(HomePage)
