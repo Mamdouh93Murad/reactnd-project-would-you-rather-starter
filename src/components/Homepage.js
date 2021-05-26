@@ -25,7 +25,6 @@ export default class HomePage extends Component {
     render() { 
         return (
             <div>
-                
                 <h1 style={{textAlign : 'center', textDecoration: 'underline'}}>Home Page</h1>
                 <div style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                     <div>
@@ -35,6 +34,14 @@ export default class HomePage extends Component {
                         <button id="answered" onClick={this.handleChange}>Answered Questions</button>
                     </div>
                 </div>
+                <div>
+                {this.state.status === false ? 
+                (
+                    <h1 style={{textAlign : 'center'}}>Unanswered</h1>
+                )
+            :
+            (<h1 style={{textAlign : 'center'}}>Answered</h1>)}
+            </div>
             </div>
         )
     }
