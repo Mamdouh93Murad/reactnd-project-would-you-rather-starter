@@ -73,9 +73,9 @@ export class Login extends Component {
                 </div>
             <div>
             <br></br> 
-            <h3 style={{textAlign:'center'}}>To Sign Up</h3>
+            <h1 style={{textAlign:'center'}}>To Sign Up</h1>
             <div style={{textAlign:'center', justifyContent: 'space-around'}}>
-                <h2>Please Insert User Details</h2>
+                <h3>Please Enter User Details</h3>
             </div>
             <div style={{textAlign:'center', justifyContent: 'space-evenly'}}>
                 <div className="new-user">
@@ -125,7 +125,7 @@ export class Login extends Component {
                 </div>
             </div>
             <div style={{textAlign:'center'}}>
-                <button style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</button>
+                <button style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.password.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</button>
             </div>
         </div>
         </div>
