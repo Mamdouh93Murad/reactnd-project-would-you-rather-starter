@@ -9,8 +9,10 @@ import { Redirect } from 'react-router-dom'
 export class Login extends Component {
     state = {
         id:'',
+        idIn:'',
         name:'',
         password : '',
+        passwordUp : '',
         avatarURL:'',
         toHome: false
       }
@@ -19,32 +21,66 @@ export class Login extends Component {
             this.setState({id:event.target.value})
           } else if (event.target.name === 'name'){
             this.setState({name: event.target.value})
-          } else if (event.target.name === 'password'){
-            this.setState({password: event.target.value})
+          } else if (event.target.name === 'password-up'){
+            this.setState({passwordUp: event.target.value})
           }
           else if (event.target.name === 'avatarURL'){
             this.setState({avatarURL: event.target.value})
           }
       }
+      handleChangeIn = (event) => {
+        if (event.target.name === 'password-in'){
+            this.setState({password: event.target.value})
+        }
+    }
 
       handleSubmitUp = (event) => {
         event.preventDefault()
         const{dispatch} = this.props
-        dispatch(handleAddUser(this.state.id, this.state.name, this.state.password, this.state.avatarURL))
+        dispatch(handleAddUser(this.state.id, this.state.name, this.state.passwordUp, this.state.avatarURL))
         
         this.setState(() => ({
             id: '',
             name:'',
-            password : '',
+            passwordUp: '',
             avatarURL:'',
             toHome: true
           }))
         }
 
-        handleChange = (e,data) => {
-        e.preventDefault()
-        this.props.dispatch(setAuthedUser(data.value))
+        handleSubmitIn = (event) => {
+            event.preventDefault()
+            var user_id
+            var loginPassword
+                this.props.users.map((user) =>
+                    {if(user.id === this.state.idIn)
+                    {
+                        user_id = user.id
+                        loginPassword = user.password
+                    }
+                    })    
+                
+                {if(user_id === this.state.idIn && loginPassword === this.state.password)
+                {
+                    this.props.dispatch(setAuthedUser(this.state.idIn))
+                    this.setState(() => ({
+                        idIn: '',
+                        password: '',
+                      }))
+                }
+                else
+                {
+                    console.log(user_id)
+                    console.log(loginPassword)
+                    alert('Wrong User Info')
+                }                
+                }
         
+    }  
+
+    handleChange = (event,data) => {
+        event.preventDefault()
+        this.setState({idIn: data.value})
     }  
     render() {
         const { users} = this.props
@@ -70,6 +106,18 @@ export class Login extends Component {
                         onChange={this.handleChange}
                         options={friendOptions}
                     />
+                    <input
+                        style={{margin:'5px'}}
+                        name ='password-in'
+                        className="user-input"
+                        type="password"
+                        placeholder="Password"
+                        value={this.state.password}
+                        onChange={this.handleChangeIn}
+                    />  
+                    <div style={{textAlign:'center'}}>
+                        <button style={{margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</button>
+                    </div>
                 </div>
             <div>
             <br></br> 
@@ -104,11 +152,11 @@ export class Login extends Component {
                 <div className="new-user">
                     <input
                         style={{margin:'5px'}}
-                        name ='password'
+                        name ='password-up'
                         className="user-input"
                         type="password"
                         placeholder="Password"
-                        value={this.state.password}
+                        value={this.state.passwordUp}
                         onChange={this.handleChangeUp}
                     />   
                 </div>
@@ -125,7 +173,7 @@ export class Login extends Component {
                 </div>
             </div>
             <div style={{textAlign:'center'}}>
-                <button style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.password.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</button>
+                <button style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</button>
             </div>
         </div>
         </div>

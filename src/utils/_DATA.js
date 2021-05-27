@@ -3,6 +3,7 @@ let users = {
     id: 'sarahedo',
     name: 'Sarah Edo',
     avatarURL: "https://www.w3schools.com/howto/img_avatar2.png" ,
+    password: 'sarah',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -15,6 +16,7 @@ let users = {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
     // avatarURL: "https://www.w3schools.com/w3css/img_avatar2.png" ,
+    password : 'tyler',
     avatarURL: "https://media.istockphoto.com/vectors/profile-icon-male-avatar-portrait-casual-person-vector-id530827853?k=6&m=530827853&s=612x612&w=0&h=FYnhkmLYaHjYSyTva1A72eDj5yu3sU7TUXg_BsH1Dfw=",
 
     answers: {
@@ -26,6 +28,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
+    password : 'john',
     avatarURL: "https://media.istockphoto.com/vectors/profile-icon-male-avatar-portrait-casual-person-vector-id530827853?k=6&m=530827853&s=612x612&w=0&h=FYnhkmLYaHjYSyTva1A72eDj5yu3sU7TUXg_BsH1Dfw=",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',

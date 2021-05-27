@@ -91,7 +91,7 @@ export class HomePage extends Component {
                                     <h1 key={question.author}>Asked By: {question.author} </h1>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         <div  >
-                                            <h3 key={question.optionOne.text} style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
+                                            <h3 key={question.optionOne.text} style={{color:'blue', textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
                                             <h4 key={question.optionOne.votes.length}>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
 
@@ -114,7 +114,7 @@ export class HomePage extends Component {
                                         </div>
  
                                         <div >
-                                            <h3 key={question.optionTwo.text} style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionTwo.text}</h3>
+                                            <h3 key={question.optionTwo.text} style={{color:'blue',textDecoration:'underline', fontStyle: 'italic'}}>{question.optionTwo.text}</h3>
                                             <h4 key={question.optionTwo.votes.length}>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@ export class HomePage extends Component {
                     )
                     :
                     (
-                        <div key={'unanswered'} style={{textAlign:'center', justifyContent: 'space-around'}}>
+                        <div key={'answered'} style={{textAlign:'center', justifyContent: 'space-around'}}>
                             <h3>No Answered questions</h3>
                         </div>
                     )
