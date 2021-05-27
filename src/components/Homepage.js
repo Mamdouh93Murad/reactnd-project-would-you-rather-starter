@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Link, withRouter} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 export class HomePage extends Component {
     state = 
     {
@@ -22,6 +22,10 @@ export class HomePage extends Component {
             }))
             console.log(this.state.status)
         }
+    }
+    handleChoice = (event) =>
+    {
+        console.log('still building ...')
     }
     render() { 
         const { authedUser, answered, unanswered } = this.props
@@ -52,8 +56,14 @@ export class HomePage extends Component {
                             <div style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
                                 <h1>Asked By: {question.author} </h1>
                                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
-                                    <div ><h3>{question.optionOne.text}</h3></div>
-                                    <div  ><h3>{question.optionTwo.text}</h3></div>
+                                    <label>
+                                        <input type="radio" name="OptionOne" value='optionOne' onChange={this.handleChoice}/>
+                                        {question.optionOne.text}
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="OptionTwo" value='OptionTwo' onChange={this.handleChoice}/>
+                                        {question.optionTwo.text}
+                                    </label>
                                 </div>
                             </div>
                             )}
