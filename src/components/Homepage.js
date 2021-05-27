@@ -29,9 +29,7 @@ export class HomePage extends Component {
     }
     render() { 
         const { authedUser, answered, unanswered } = this.props
-        // console.log('answered: ', answered.length)
-        // console.log('unanswered: ', unanswered.length)
-        // console.log('authedUser: ', authedUser)
+
         return (
             <div >
                 <h1 style={{textAlign : 'center', textDecoration: 'underline'}}>Home Page</h1>

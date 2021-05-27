@@ -70,8 +70,7 @@ export class Login extends Component {
                 }
                 else
                 {
-                    console.log(user_id)
-                    console.log(loginPassword)
+
                     alert('Wrong User Info')
                 }                
                 }
