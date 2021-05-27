@@ -83,9 +83,9 @@ export class HomePage extends Component {
                                             <h3 style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
                                             <h4>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
-                                        {/* <div>
-                                            <h5>Vote Results</h5>
-                                        </div> */}
+                                        <div>
+                                            <h5>Poll Link</h5>
+                                        </div>
                                         <div >
                                             <h3>{question.optionTwo.text} </h3>
                                             <h4>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
@@ -100,9 +100,9 @@ export class HomePage extends Component {
                                             <h3 >{question.optionOne.text} </h3>
                                             <h4>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
-                                        {/* <div>
-                                            <h5>Vote Results</h5>
-                                        </div> */}
+                                        <div>
+                                            <h5>Poll Link</h5>
+                                        </div>
                                         <div >
                                             <h3 style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionTwo.text}</h3>
                                             <h4>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
