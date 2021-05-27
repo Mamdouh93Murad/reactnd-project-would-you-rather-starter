@@ -60,7 +60,7 @@ export class Login extends Component {
                     }
                     })    
                 
-                {if(user_id === this.state.idIn && loginPassword === this.state.password)
+                if(user_id === this.state.idIn && loginPassword === this.state.password)
                 {
                     this.props.dispatch(setAuthedUser(this.state.idIn))
                     this.setState(() => ({
@@ -73,7 +73,7 @@ export class Login extends Component {
 
                     alert('Wrong User Info')
                 }                
-                }
+                
         
     }  
 
@@ -105,6 +105,8 @@ export class Login extends Component {
                         onChange={this.handleChange}
                         options={friendOptions}
                     />
+                    </div>
+                    <div style={{textAlign : 'center'}}>
                     <input
                         style={{margin:'5px'}}
                         name ='password-in'
