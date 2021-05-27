@@ -13,14 +13,14 @@ export class HomePage extends Component {
             this.setState(() => ({
                 status: false
             }))
-            console.log(this.state.status)
+            // console.log(this.state.status)
         }
         else
         {
             this.setState(() => ({
                 status : true
             }))
-            console.log(this.state.status)
+            // console.log(this.state.status)
         }
     }
     handleChoice = (event) =>
@@ -101,7 +101,7 @@ export class HomePage extends Component {
                                         </div>
                                     </div>
                                         <div>
-                                            <Link to = {'/'+question.id}><span>Poll Link</span></Link>
+                                            <Link to = {'/Questions/'+question.id}><span>Poll Link</span></Link>
                                         </div>
                                 </div>)
                                 :
@@ -119,7 +119,7 @@ export class HomePage extends Component {
                                         </div>
                                     </div>
                                         <div>
-                                            <Link to = {'/'+question.id}><span>Poll Link</span></Link>
+                                            <Link to = {'/Questions/'+question.id}><span>Poll Link</span></Link>
                                         </div>
                                 </div>)
     
