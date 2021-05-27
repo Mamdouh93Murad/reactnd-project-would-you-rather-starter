@@ -53,14 +53,14 @@ export class HomePage extends Component {
                                 <h1 >Unanswered Questions</h1>
                             </div>
                             {unanswered.map((question) => 
-                            <div style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
-                                <h1>Asked By: {question.author} </h1>
+                            <div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                                <h1 key={question.author}>Asked By: {question.author} </h1>
                                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
-                                    <label>
+                                    <label key={question.optionOne.text}>
                                         <input type="radio" name="OptionOne" value='optionOne' onChange={this.handleChoice}/>
                                         {question.optionOne.text}
                                     </label>
-                                    <label>
+                                    <label key={question.optionTwo.text}>
                                         <input type="radio" name="OptionTwo" value='OptionTwo' onChange={this.handleChoice}/>
                                         {question.optionTwo.text}
                                     </label>
@@ -87,17 +87,17 @@ export class HomePage extends Component {
                             </div>
                             {answered.map((question) => 
                                 question.optionOne.votes.includes(authedUser) ?
-                                (<div  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
-                                    <h1>Asked By: {question.author} </h1>
+                                (<div key={question.id}  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                                    <h1 key={question.author}>Asked By: {question.author} </h1>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         <div  >
-                                            <h3 style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
-                                            <h4>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h3 key={question.optionOne.text} style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
+                                            <h4 key={question.optionOne.votes.length}>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
 
                                         <div >
-                                            <h3>{question.optionTwo.text} </h3>
-                                            <h4>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h3 key={question.optionTwo.text}>{question.optionTwo.text} </h3>
+                                            <h4 key={question.optionTwo.votes.length}>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
                                     </div>
                                         <div>
@@ -105,17 +105,17 @@ export class HomePage extends Component {
                                         </div>
                                 </div>)
                                 :
-                                (<div  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
-                                    <h1>Asked By: {question.author} </h1>
+                                (<div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                                    <h1 key={question.author}>Asked By: {question.author} </h1>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         <div  >
-                                            <h3 >{question.optionOne.text} </h3>
-                                            <h4>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h3 key={question.optionOne.text} >{question.optionOne.text} </h3>
+                                            <h4 key={question.optionOne.votes.length}>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
  
                                         <div >
-                                            <h3 style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionTwo.text}</h3>
-                                            <h4>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h3 key={question.optionTwo.text} style={{textDecoration:'underline', fontStyle: 'italic'}}>{question.optionTwo.text}</h3>
+                                            <h4 key={question.optionTwo.votes.length}>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
                                         </div>
                                     </div>
                                         <div>
@@ -128,7 +128,7 @@ export class HomePage extends Component {
                     )
                     :
                     (
-                        <div  style={{textAlign:'center', justifyContent: 'space-around'}}>
+                        <div key={'unanswered'} style={{textAlign:'center', justifyContent: 'space-around'}}>
                             <h3>No Answered questions</h3>
                         </div>
                     )
