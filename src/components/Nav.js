@@ -16,12 +16,12 @@ export class Nav extends Component {
                 ?
                 null
                 :
-                <ul style={{display:'flex', 'justifyContent': 'space-around'}}>
-                    <li key='HomePage'><Link to='/'><span>Home Page</span></Link></li>
-                    <li key='NewQuestions'><Link to = '/New'><span>New Question</span></Link></li>
-                    <li key='Leaderboard'><Link to = '/Leaderboard'><span>Leaderboard</span></Link></li>
+                <ul key={'nav'} style={{display:'flex', 'justifyContent': 'space-around'}}>
+                    <li key={'HomePage'}><Link to='/'><span>Home Page</span></Link></li>
+                    <li key={'NewQuestions'}><Link to = '/New'><span>New Question</span></Link></li>
+                    <li key={'Leaderboard'}><Link to = '/Leaderboard'><span>Leaderboard</span></Link></li>
                     <li key={this.props.loggedin}><span>Hello, {this.props.loggedin}!</span></li>
-                    <li key='Login'><Link to = '/Login' onClick={this.LogOut}><span>Logout</span></Link></li>
+                    <li key={'Login'}><Link to = '/Login' onClick={this.LogOut}><span>Logout</span></Link></li>
                 </ul>}
             </Fragment>
         )
