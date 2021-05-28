@@ -36,9 +36,17 @@ export class HomePage extends Component {
             answer:array[0],
             authedUser:array[2],
         }))
-        this.props.dispatch(handleAnswerQuestion(this.state.authedUser, this.state.qid, this.state.answer))
-
     }
+    componentDidUpdate(prevPros, prevState)
+    {
+        if(prevState.qid !== this.state.qid)
+        {
+            this.props.dispatch(handleAnswerQuestion(this.state.authedUser, this.state.qid, this.state.answer))
+
+        }
+    }
+        
+    
     render() { 
         const { authedUser, answered, unanswered } = this.props
  
