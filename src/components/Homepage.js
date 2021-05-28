@@ -5,8 +5,8 @@ import { handleAnswerQuestion } from '../actions/questions'
 export class HomePage extends Component {
     state = 
     {
-        author: '',
-        id: '',
+        authedUser: '',
+        qid: '',
         answer: '',
         status : false
     }
@@ -32,11 +32,11 @@ export class HomePage extends Component {
         const str = event.target.value
         const array = str.split(",")
         this.setState(() => ({
-            id:array[0],
+            qid:array[0],
             answer:array[1],
-            author:array[2],
+            authedUser:array[2],
         }))
-        this.props.dispatch(handleAnswerQuestion(this.state.author, this.state.id, this.state.answer))
+        this.props.dispatch(handleAnswerQuestion(this.state.authedUser, this.state.qid, this.state.answer))
     }
     render() { 
         const { authedUser, answered, unanswered } = this.props
