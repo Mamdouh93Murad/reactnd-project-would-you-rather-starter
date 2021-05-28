@@ -32,15 +32,16 @@ export class HomePage extends Component {
         const str = event.target.value
         const array = str.split(",")
         this.setState(() => ({
-            qid:array[0],
-            answer:array[1],
+            qid:array[1],
+            answer:array[0],
             authedUser:array[2],
         }))
         this.props.dispatch(handleAnswerQuestion(this.state.authedUser, this.state.qid, this.state.answer))
+
     }
     render() { 
         const { authedUser, answered, unanswered } = this.props
-
+ 
         return (
             <div >
                 <h1 style={{textAlign : 'center', textDecoration: 'underline'}}>Home Page</h1>
@@ -65,14 +66,15 @@ export class HomePage extends Component {
                             <div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
                                 <h1 key={question.author}>Asked By: {question.author} </h1>
                                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
-                                    <label key={question.optionOne.text}>
-                                        <input type="radio" name="OptionOne" value={[question.optionOne.text, question.id, question.author]} onClick={this.handleChoice}/>
+                                   
+                                        <button name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionOne.text}
-                                    </label>
-                                    <label key={question.optionTwo.text}>
-                                        <input type="radio" name="OptionTwo" value={[question.optionTwo.text, question.id, question.author]} onClick={this.handleChoice}/>
+                                        </button>
+                                    
+                                        <button  name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionTwo.text}
-                                    </label>
+                                        </button>
+                                    
                                 </div>
                             </div>
                             )}
