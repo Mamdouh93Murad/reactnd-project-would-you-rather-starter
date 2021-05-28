@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
+import { handleAnswerQuestion } from '../actions/questions'
 export class HomePage extends Component {
     state = 
     {
+        author: '',
+        id: '',
+        answer: '',
         status : false
     }
     handleChange = (event) =>
@@ -25,7 +29,14 @@ export class HomePage extends Component {
     }
     handleChoice = (event) =>
     {
-        console.log('still building ...')
+        const str = event.target.value
+        const array = str.split(",")
+        this.setState(() => ({
+            id:array[0],
+            answer:array[1],
+            author:array[2],
+        }))
+        this.props.dispatch(handleAnswerQuestion(this.state.author, this.state.id, this.state.answer))
     }
     render() { 
         const { authedUser, answered, unanswered } = this.props
@@ -55,11 +66,11 @@ export class HomePage extends Component {
                                 <h1 key={question.author}>Asked By: {question.author} </h1>
                                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                     <label key={question.optionOne.text}>
-                                        <input type="radio" name="OptionOne" value='optionOne' onChange={this.handleChoice}/>
+                                        <input type="radio" name="OptionOne" value={[question.optionOne.text, question.id, question.author]} onClick={this.handleChoice}/>
                                         {question.optionOne.text}
                                     </label>
                                     <label key={question.optionTwo.text}>
-                                        <input type="radio" name="OptionTwo" value='OptionTwo' onChange={this.handleChoice}/>
+                                        <input type="radio" name="OptionTwo" value={[question.optionTwo.text, question.id, question.author]} onClick={this.handleChoice}/>
                                         {question.optionTwo.text}
                                     </label>
                                 </div>
