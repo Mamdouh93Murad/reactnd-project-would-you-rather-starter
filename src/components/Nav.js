@@ -2,12 +2,13 @@ import React, { Component, Fragment } from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { unsetAuthedUser } from '../actions/authedUser'
+import { Redirect } from 'react-router-dom'
 
 export class Nav extends Component {
     LogOut = (e) => {
         e.preventDefault()
-        this.props.dispatch(unsetAuthedUser())
-        // this.props.history.push('/')
+        this.props.dispatch(unsetAuthedUser());
+        this.props.history.push('/')
     }
     render() {
        
