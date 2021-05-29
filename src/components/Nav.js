@@ -8,7 +8,7 @@ export class Nav extends Component {
     LogOut = (e) => {
         e.preventDefault()
         this.props.dispatch(unsetAuthedUser());
-        this.props.history.push('/')
+       
     }
     render() {
        
