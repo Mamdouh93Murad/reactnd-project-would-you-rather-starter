@@ -120,16 +120,20 @@ export class HomePage extends Component {
                                         <div  >
                                             <h3 key={question.optionOne.text} style={{color:'blue', textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
                                             <h4 key={question.optionOne.votes.length}>{Math.round(((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
+                                            <h6>Votes : {question.optionOne.votes.length}</h6>
                                         </div>
 
                                         <div >
                                             <h3 key={question.optionTwo.text}>{question.optionTwo.text} </h3>
                                             <h4 key={question.optionTwo.votes.length}>{Math.round(((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
+                                            <h6>Votes : {question.optionTwo.votes.length}</h6>
                                         </div>
                                     </div>
                                         <div>
                                             <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><span>Poll Link</span></Link>
                                         </div>
+                                        <h5 >Total Votes : {question.optionTwo.votes.length+question.optionOne.votes.length}</h5>
+
                                 </div>)
                                 :
                                 (<div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
