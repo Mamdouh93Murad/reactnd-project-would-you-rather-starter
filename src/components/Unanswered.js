@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
-import { useHistory } from "react-router-dom"
+
 
 
 export class Unanswered extends Component {
