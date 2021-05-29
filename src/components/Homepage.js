@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
+
+
 export class HomePage extends Component {
     state = 
     {
@@ -27,29 +29,28 @@ export class HomePage extends Component {
             // console.log(this.state.status)
         }
     }
-    handleChoice = (event) =>
-    {
-        const str = event.target.value
-        const array = str.split(",")
-        this.setState(() => ({
-            qid:array[1],
-            answer:array[0],
-            authedUser:array[2],
-        }))
-    }
-    componentDidUpdate(prevPros, prevState)
-    {
-        if(prevState.qid !== this.state.qid)
-        {
-            this.props.dispatch(handleAnswerQuestion(this.state.authedUser, this.state.qid, this.state.answer))
-
-        }
-    }
+    // handleChoice = (event) =>
+    // {
+    //     const str = event.target.value
+    //     const array = str.split(",")
+    //     this.setState(() => ({
+    //         qid:array[1],
+    //         answer:array[0],
+    //         authedUser:array[2],
+    //     }))
+    // }
+    // componentDidUpdate(prevPros, prevState)
+    // {
+    //     if(prevState.qid !== this.state.qid)
+    //     {
+    //         this.props.dispatch(handleAnswerQuestion(this.state.authedUser, this.state.qid, this.state.answer))
+    //     }
+    // }
         
     
     render() { 
         const { authedUser, answered, unanswered } = this.props
- 
+        
         return (
             <div >
                 <h1 style={{textAlign : 'center', textDecoration: 'underline'}}>Home Page</h1>
@@ -72,18 +73,24 @@ export class HomePage extends Component {
                             </div>
                             {unanswered.map((question) => 
                             <div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                                
                                 <h1 key={question.author}>Asked By: {question.author} </h1>
+                                <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
-                                   
-                                        <button name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
+                                        
+                                        <button disabled name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionOne.text}
                                         </button>
-                                    
-                                        <button  name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
+
+                                        <div>
+                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: false,},}}>Click to Vote</Link>
+                                        </div>
+
+                                        <button disabled name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionTwo.text}
                                         </button>
-                                    
                                 </div>
+
                             </div>
                             )}
                         </div>
@@ -108,37 +115,44 @@ export class HomePage extends Component {
                                 question.optionOne.votes.includes(authedUser) ?
                                 (<div key={question.id}  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
                                     <h1 key={question.author}>Asked By: {question.author} </h1>
+                                    <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         <div  >
                                             <h3 key={question.optionOne.text} style={{color:'blue', textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
-                                            <h4 key={question.optionOne.votes.length}>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h4 key={question.optionOne.votes.length}>{Math.round(((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
                                         </div>
 
                                         <div >
                                             <h3 key={question.optionTwo.text}>{question.optionTwo.text} </h3>
-                                            <h4 key={question.optionTwo.votes.length}>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h4 key={question.optionTwo.votes.length}>{Math.round(((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
                                         </div>
                                     </div>
                                         <div>
-                                            <Link to = {'/Questions/'+question.id}><span>Poll Link</span></Link>
+                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><span>Poll Link</span></Link>
                                         </div>
                                 </div>)
                                 :
                                 (<div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
                                     <h1 key={question.author}>Asked By: {question.author} </h1>
+                                    <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         <div  >
                                             <h3 key={question.optionOne.text} >{question.optionOne.text} </h3>
-                                            <h4 key={question.optionOne.votes.length}>{((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h4 key={question.optionOne.votes.length}>{Math.round(((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
+                                            <h6>Votes : {question.optionOne.votes.length}</h6>
+
                                         </div>
  
                                         <div >
                                             <h3 key={question.optionTwo.text} style={{color:'blue',textDecoration:'underline', fontStyle: 'italic'}}>{question.optionTwo.text}</h3>
-                                            <h4 key={question.optionTwo.votes.length}>{((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100}%</h4>
+                                            <h4 key={question.optionTwo.votes.length}>{Math.round(((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
+                                            <h6>Votes : {question.optionTwo.votes.length}</h6>
                                         </div>
                                     </div>
+                                    <h5 >Total Votes : {question.optionTwo.votes.length+question.optionOne.votes.length}</h5>
+
                                         <div>
-                                            <Link to = {'/Questions/'+question.id}><span>Poll Link</span></Link>
+                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><span>Poll Link</span></Link>
                                         </div>
                                 </div>)
     
