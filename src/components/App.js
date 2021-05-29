@@ -34,6 +34,7 @@ class App extends Component {
                   <Route exact path = '/Leaderboard' component={Leaderboard} />
                   <Route path= '/Questions/:id' component={Question} />
                   <Route  component={ErrorPage}/>
+                  <Route path= "*" component={ErrorPage} />
                 </Switch>
                 </div>}
           </div>

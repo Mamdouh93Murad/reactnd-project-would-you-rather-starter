@@ -2,16 +2,27 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import Unanswered from './Unanswered'
-
+import ErrorPage from './ErrorPage'
 
 export function Question({authedUser, questions}) {
-
+    var condition = null
+    var path = null
+    var url = null
+    var id = null
 
     const location = useLocation()
-    const condition = location.state.condition
-    const path = window.location.pathname
-    const url = path.split('/');
-    const id = url[2]
+    if(location.state === undefined)
+    {
+       return (<ErrorPage/>)
+    }
+    else
+    {
+         condition = location.state.condition
+         path = window.location.pathname
+         url = path.split('/');
+         id = url[2]
+    }
+
     return (
         <div>
             {condition === false ?
