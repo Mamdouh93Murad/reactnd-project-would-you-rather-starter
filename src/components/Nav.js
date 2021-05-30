@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { unsetAuthedUser } from '../actions/authedUser'
-import { Button } from 'semantic-ui-react'
+import { Button, Menu } from 'semantic-ui-react'
 
 export class Nav extends Component {
     LogOut = (e) => {
@@ -18,15 +18,14 @@ export class Nav extends Component {
                 ?
                 null
                 :
-                <ul style={{display:'flex', listStyle:'none'}}>
+                <Menu tabular style={{display:'flex', listStyle:'none'}}>
+                    <Menu.Item style={{marginLeft:'50px'}}/*key={'NewQuestion'} */><Link to = '/'><span>Home Page</span></Link></Menu.Item>
+                    <Menu.Item style={{marginLeft:'50px'}}/*key={'NewQuestion'} */><Link to = '/New'><span>New Question</span></Link></Menu.Item>
+                    <Menu.Item style={{marginLeft:'50px'}}/*key={'Leaderboard'} */><Link to = '/Leaderboard'><span>Leaderboard</span></Link></Menu.Item>
+                    <Menu.Item style={{marginLeft:'auto', marginRight:'100px'}}/*key={'Loggedin} */><span>Hello, {this.props.loggedin}!</span></Menu.Item>
+                    <Menu.Item style={{ marginRight:'100px'}}/*key={'Logout'} */><Button  negative to = '/Login' onClick={this.LogOut}><span>Logout</span></Button></Menu.Item>
                     
-                    <li style={{marginLeft:'50px'}}/*key={'HomePage'} */><Link to='/'><span>Home Page</span></Link></li>
-                    <li style={{marginLeft:'50px'}}/*key={'NewQuestion'} */><Link to = '/New'><span>New Question</span></Link></li>
-                    <li style={{marginLeft:'50px'}}/*key={'Leaderboard'} */><Link to = '/Leaderboard'><span>Leaderboard</span></Link></li>
-                    <li style={{marginLeft:'auto', marginRight:'100px'}}/*key={'Loggedin} */><span>Hello, {this.props.loggedin}!</span></li>
-                    <li style={{ marginRight:'100px'}}/*key={'Logout'} */><Button  negative to = '/Login' onClick={this.LogOut}><span>Logout</span></Button></li>
-                    
-                </ul >}
+                </Menu>}
             </Fragment>
         )
     }
