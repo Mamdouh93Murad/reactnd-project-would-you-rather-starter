@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
-
+import { Button } from 'semantic-ui-react'
 
 
 export class Unanswered extends Component {
@@ -51,13 +51,13 @@ export class Unanswered extends Component {
                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                             
-                            <button  name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
+                            <Button primary name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
                             {question.optionOne.text}
-                            </button>
+                            </Button>
 
-                            <button  name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
+                            <Button primary  name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
                             {question.optionTwo.text}
-                            </button>
+                            </Button>
      
                     </div>
                 </div>)

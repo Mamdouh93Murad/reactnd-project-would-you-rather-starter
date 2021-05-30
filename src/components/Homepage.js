@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 // import { handleAnswerQuestion } from '../actions/questions'
-
+import { Button, Container, Card } from 'semantic-ui-react'
 
 export class HomePage extends Component {
     state = 
@@ -53,13 +53,13 @@ export class HomePage extends Component {
         
         return (
             <div >
-                <h1 style={{textAlign : 'center', textDecoration: 'underline'}}>Home Page</h1>
+                <h1 style={{textAlign : 'center', marginBottom:'20px'}}>Home Page</h1>
                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                     <div >
-                        <button id="unanswered" onClick={this.handleChange}>Unanswered Questions</button>
+                        <Button primary id="unanswered" onClick={this.handleChange}>Unanswered Questions</Button>
                     </div>
                     <div >
-                        <button id="answered" onClick={this.handleChange}>Answered Questions</button>
+                        <Button primary id="answered" onClick={this.handleChange}>Answered Questions</Button>
                     </div>
                 </div>
                 <div>
@@ -67,39 +67,39 @@ export class HomePage extends Component {
                 (
                     unanswered.length !== 0? 
                     (   
-                        <div >            
+                        <Container >            
                             <div  style={{textAlign:'center', justifyContent: 'space-around'}}>
-                                <h1 >Unanswered Questions</h1>
+                                <h1 style={{marginBottom:'20px'}}>Unanswered Questions</h1>
                             </div>
                             {unanswered.map((question) => 
-                            <div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                            <Card color='blue' key={question.id} style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px'}}>
                                 
                                 <h1 key={question.author}>Asked By: {question.author} </h1>
                                 <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         
-                                        <button disabled name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
+                                        <Button primary disabled name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionOne.text}
-                                        </button>
+                                        </Button>
 
                                         <div>
                                             <Link to={{pathname: "/Questions/"+question.id,state: {condition: false,},}}>Click to Vote</Link>
                                         </div>
 
-                                        <button disabled name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
+                                        <Button primary disabled name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionTwo.text}
-                                        </button>
+                                        </Button>
                                 </div>
 
-                            </div>
+                            </Card>
                             )}
-                        </div>
+                        </Container>
                     )
                     :
                     (
-                        <div style={{textAlign:'center', justifyContent: 'space-around'}}>
+                        <Container style={{textAlign:'center', justifyContent: 'space-around'}}>
                             <h3>No Unaswered questions</h3>
-                        </div>
+                        </Container>
                     )
 
                 )
@@ -107,13 +107,13 @@ export class HomePage extends Component {
                 (
                     answered.length !== 0 ? 
                     (   
-                        <div >            
+                        <Container >            
                             <div  style={{textAlign:'center', justifyContent: 'space-around'}}>
-                                <h1 >Answered Questions</h1>
+                                <h1 style={{marginBottom:'20px'}}>Answered Questions</h1>
                             </div>
                             {answered.map((question) => 
                                 question.optionOne.votes.includes(authedUser) ?
-                                (<div key={question.id}  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                                (<Card color='blue' key={question.id}  style={{textAlign:'center', width:'50%', margin:'auto',marginBottom:'50px', paddingBottom:'50px', paddingTop:'50px'}}>
                                     <h1 key={question.author}>Asked By: {question.author} </h1>
                                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
@@ -134,9 +134,9 @@ export class HomePage extends Component {
                                         </div>
                                         <h5 >Total Votes : {question.optionTwo.votes.length+question.optionOne.votes.length}</h5>
 
-                                </div>)
+                                </Card>)
                                 :
-                                (<div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                                (<Card color='blue' key={question.id} style={{textAlign:'center',  width:'50%', margin:'auto', marginBottom:'50px', paddingBottom:'50px', paddingTop:'50px'}}>
                                     <h1 key={question.author}>Asked By: {question.author} </h1>
                                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
@@ -158,10 +158,10 @@ export class HomePage extends Component {
                                         <div>
                                             <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><span>Poll Link</span></Link>
                                         </div>
-                                </div>)
+                                </Card>)
     
                             )}
-                        </div>
+                        </Container>
                     )
                     :
                     (

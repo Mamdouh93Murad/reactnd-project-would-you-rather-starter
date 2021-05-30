@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import { Redirect } from 'react-router-dom'
+import { Button, Input } from 'semantic-ui-react'
 export class Login extends Component {
     state = {
         id:'',
@@ -107,7 +108,7 @@ export class Login extends Component {
                     />
                     </div>
                     <div style={{textAlign : 'center'}}>
-                    <input
+                    <Input
                         style={{margin:'5px'}}
                         name ='password-in'
                         className="user-input"
@@ -117,7 +118,7 @@ export class Login extends Component {
                         onChange={this.handleChangeIn}
                     />  
                     <div style={{textAlign:'center'}}>
-                        <button style={{margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</button>
+                        <Button primary style={{margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</Button>
                     </div>
                 </div>
             <div>
@@ -129,7 +130,7 @@ export class Login extends Component {
             <div style={{textAlign:'center', justifyContent: 'space-evenly'}}>
                 <div className="new-user">
                     
-                    <input
+                    <Input
                         style={{margin:'5px'}}
                         name='id'
                         className="user-input"
@@ -140,7 +141,7 @@ export class Login extends Component {
                      />   
                 </div>
                 <div className="new-user">
-                    <input
+                    <Input
                         style={{margin:'5px'}}
                         name ='name'
                         className="user-input"
@@ -151,7 +152,7 @@ export class Login extends Component {
                     />
                 </div>
                 <div className="new-user">
-                    <input
+                    <Input
                         style={{margin:'5px'}}
                         name ='password-up'
                         className="user-input"
@@ -162,7 +163,7 @@ export class Login extends Component {
                     />   
                 </div>
                 <div className="new-user">
-                    <input
+                    <Input
                         style={{margin:'5px'}}
                         name ='avatarURL'
                         className="user-input"
@@ -174,7 +175,7 @@ export class Login extends Component {
                 </div>
             </div>
             <div style={{textAlign:'center'}}>
-                <button style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</button>
+                <Button primary style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</Button>
             </div>
         </div>
         </div>
