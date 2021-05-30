@@ -153,7 +153,7 @@ export class Login extends Component {
                 (<div style={{textAlign:'center', position:'absolute', top:'120%'}}>
                     <h1 style={{textAlign:'center'}}>To Sign Up</h1>
             <div style={{textAlign:'center', justifyContent: 'space-around'}}>
-                <h3>Please Enter User Details</h3>
+                <h3>Enter User Details</h3>
             </div>
             <div style={{textAlign:'center', justifyContent: 'space-evenly'}}>
                 <div className="new-user">
