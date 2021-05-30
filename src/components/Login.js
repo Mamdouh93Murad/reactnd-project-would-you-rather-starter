@@ -16,7 +16,7 @@ export class Login extends Component {
         passwordUp : '',
         avatarURL:'',
         toHome: false,
-        status: false
+        status: true
       }
       handleChangeUp = (event) => {
         if (event.target.name === 'id') {
@@ -119,10 +119,10 @@ export class Login extends Component {
                             <Button primary id="Login" onClick={this.handleStatus}>Login</Button>
                         </div>
                         <div >
-                            <Button primary id="SignUp" onClick={this.handleStatus}>Sign Up</Button>
+                            <Button positive id="SignUp" onClick={this.handleStatus}>Sign Up</Button>
                         </div>
                     {this.state.status === false ?
-                (<Card  style={{marginLeft:'-25%',minWidth:'150%',textAlign:'center', position:'absolute', top:'120%'}}>
+                (<Card color='blue' style={{marginLeft:'-25%',minWidth:'150%',textAlign:'center', position:'absolute', top:'120%'}}>
                 
                     <h1 style={{textAlign: 'center'}}>Choose User</h1>
                     <div  style={{ textAlign : 'center'}}>
@@ -152,7 +152,7 @@ export class Login extends Component {
                     </div>
                     </Card>)
                 :
-                (<Card style={{marginLeft:'-25%',minWidth:'150%',textAlign:'center', position:'absolute', top:'120%'}}>
+                (<Card color='green' style={{marginLeft:'-25%',minWidth:'150%',textAlign:'center', position:'absolute', top:'120%'}}>
                     <h1 style={{textAlign:'center'}}>To Sign Up</h1>
             
                 <div className="new-user">       
@@ -203,7 +203,7 @@ export class Login extends Component {
                 
             </div>
                 <div style={{textAlign:'center'}}>
-                    <Button primary style={{width:'70%',margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</Button>
+                    <Button positive style={{width:'70%',margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</Button>
                 </div>
            
                 </Card>)
