@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import Unanswered from './Unanswered'
 import ErrorPage from './ErrorPage'
 
+import { Button, Container, Card } from 'semantic-ui-react'
 export function Question({authedUser, questions}) {
     var condition = null
     var path = null
@@ -31,7 +32,7 @@ export function Question({authedUser, questions}) {
                 (questions.map((question) =>
                 question.id === id ?
                 (question.optionOne.votes.includes(authedUser) ?
-                (<div key={question.id}  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                (<Card key={question.id}  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
                     <h1 key={question.author}>Asked By: {question.author} </h1>
                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
@@ -48,9 +49,9 @@ export function Question({authedUser, questions}) {
                         </div>
                     </div>
                     <h5 >Total Votes : {question.optionTwo.votes.length+question.optionOne.votes.length}</h5>
-                </div>)
+                </Card>)
                 :
-                (<div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                (<Card color='blue' key={question.id} style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px', marginBottom:'50px'}}>
                     <h1 key={question.author}>Asked By: {question.author} </h1>
                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
@@ -67,7 +68,7 @@ export function Question({authedUser, questions}) {
                         </div>
                     </div>
                     <h5 >Total Votes : {question.optionTwo.votes.length+question.optionOne.votes.length}</h5>
-                </div>))
+                </Card>))
                 :
                 (null)
                 ))}

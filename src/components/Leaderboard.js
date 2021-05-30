@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import { Button, Container, Card } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 
@@ -13,15 +14,15 @@ export class Leaderboard extends Component {
                 <div style={{textAlign : 'center', border:'1px, solid, black'}}>
                 {users.map((user) =>
                 (
-                    <div key={user.id}>
-                        <img style={{width:'10%'}}src={user.avatarURL} alt={`${user.name}'s avatar`} className="avatar"/>
+                    <Card color='blue' key={user.id} style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px', marginBottom:'50px'}}>
+                        <img style={{alignSelf:'center'}}src={user.avatarURL} alt={`${user.name}'s avatar`} className="avatar"/>
                         <div className="leaderboard-details">
                             <h2>{user.name}</h2>
                             <h3>score : {user.questions.length+Object.keys(user.answers).length}</h3>
                             <p>Answered questions {Object.keys(user.answers).length}</p>
                             <p>Created questions {user.questions.length}</p>
                         </div>
-                    </div>
+                    </Card>
                 ))}
             </div>
             

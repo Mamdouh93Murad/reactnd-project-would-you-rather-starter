@@ -78,23 +78,7 @@ export class Login extends Component {
                 
         
     }  
-    handleStatus = (event) =>
-    {
-        if(event.target.id === 'Login')
-        {
-            this.setState(() => ({
-                status: false
-            }))
-            // console.log(this.state.status)
-        }
-        else
-        {
-            this.setState(() => ({
-                status : true
-            }))
-            // console.log(this.state.status)
-        }
-    }
+
     handleChange = (event,data) => {
         event.preventDefault()
         this.setState({idIn: data.value})
@@ -114,44 +98,33 @@ export class Login extends Component {
           } else {
         return (
             <div>
-                    <div  style={{textAlign:'center', display:'flex', margin:'auto', position:'absolute', top:'15%', left:'45%'}}>
-                    <div >
-                        <Button primary id="Login" onClick={this.handleStatus}>Login</Button>
+                <h1 style={{textAlign: 'center'}}>Choose Login User</h1>
+                <div style={{textAlign : 'center'}}>
+                    <Dropdown
+                        placeholder='Choose User'
+                        selectOnBlur={false}
+                        selection
+                        onChange={this.handleChange}
+                        options={friendOptions}
+                    />
                     </div>
-                    <div >
-                        <Button primary id="SignUp" onClick={this.handleStatus}>Sign Up</Button>
-                    </div>
-                    {this.state.status === false ?
-                (<div style={{textAlign:'center', position:'absolute', top:'120%'}}>
-                
-                    <h1 style={{textAlign: 'center'}}>Choose User</h1>
                     <div style={{textAlign : 'center'}}>
-                        <Dropdown
-                            placeholder='Choose User'
-                            selectOnBlur={false}
-                            selection
-                            onChange={this.handleChange}
-                            options={friendOptions}
-                        />
-                        </div>
-                        <div style={{textAlign : 'center'}}>
-                        <Input
-                            style={{margin:'5px'}}
-                            name ='password-in'
-                            className="user-input"
-                            type="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.handleChangeIn}
-                        />  
-                        <div style={{textAlign:'center'}}>
-                            <Button primary style={{margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</Button>
-                        </div>
+                    <Input
+                        style={{margin:'5px'}}
+                        name ='password-in'
+                        className="user-input"
+                        type="password"
+                        placeholder="Password"
+                        value={this.state.password}
+                        onChange={this.handleChangeIn}
+                    />  
+                    <div style={{textAlign:'center'}}>
+                        <Button primary style={{margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</Button>
                     </div>
-                    </div>)
-                :
-                (<div style={{textAlign:'center', position:'absolute', top:'120%'}}>
-                    <h1 style={{textAlign:'center'}}>To Sign Up</h1>
+                </div>
+            <div>
+            <br></br> 
+            <h1 style={{textAlign:'center'}}>To Sign Up</h1>
             <div style={{textAlign:'center', justifyContent: 'space-around'}}>
                 <h3>Please Enter User Details</h3>
             </div>
@@ -205,10 +178,7 @@ export class Login extends Component {
             <div style={{textAlign:'center'}}>
                 <Button primary style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</Button>
             </div>
-                </div>)
-                }
-                </div>
-
+        </div>
         </div>
         )
     }

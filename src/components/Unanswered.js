@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
-import { Button } from 'semantic-ui-react'
 
+import { Button, Container, Card } from 'semantic-ui-react'
 
 export class Unanswered extends Component {
     state = 
@@ -45,7 +45,7 @@ export class Unanswered extends Component {
                 <h1 style={{textAlign:'center'}}>Poll Details</h1>
                 {questions.map((question) =>
                     question.id === id ?
-                    (<div key={question.id} style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                    (<Card color='blue' key={question.id} style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px', marginBottom:'50px'}}>
                                 
                     <h1 key={question.author}>Asked By: {question.author} </h1>
                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
@@ -60,7 +60,7 @@ export class Unanswered extends Component {
                             </Button>
      
                     </div>
-                </div>)
+                </Card>)
                 :
                 (null))}
             </div>

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
-import { Button, Container, Input } from 'semantic-ui-react'
+import { Button, Container, Input, Card } from 'semantic-ui-react'
 export class NewQuestion extends Component {
     state = {
         OptionOne:'',
@@ -36,10 +36,10 @@ export class NewQuestion extends Component {
             return <Redirect to='/'/>
           } else {
         return (
-            <div>
+            <Card color='green'  style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px', marginBottom:'50px'}}>
                 
-                <h1 style={{textAlign : 'center'}}>New Question</h1>
-                <div style={{textAlign:'center', justifyContent: 'space-around', marginTop:'150px'}}>
+                <h1 style={{textAlign : 'center', color:'green'}}>New Question</h1>
+                <div style={{textAlign:'center', justifyContent: 'space-around', marginTop:'100px', marginBottom:'50px'}}>
                     <h2>Would You Rather</h2>
                 </div>
                 <div style={{textAlign:'center', display:'flex', justifyContent: 'space-evenly'}}>
@@ -67,9 +67,9 @@ export class NewQuestion extends Component {
                     </div>
                 </div>
                 <div style={{textAlign:'center'}}>
-                    <Button primary disabled={this.state.OptionOne.length === 0 || this.state.OptionTwo.length === 0} type="Submit"  onClick={this.handleSubmit}>Submit</Button>
+                    <Button style={{color:'green'}} disabled={this.state.OptionOne.length === 0 || this.state.OptionTwo.length === 0} type="Submit"  onClick={this.handleSubmit}>Submit</Button>
                 </div>
-            </div>
+            </Card>
             
         )
     }
