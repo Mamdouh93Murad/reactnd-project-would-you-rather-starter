@@ -54,7 +54,7 @@ export class Login extends Component {
             event.preventDefault()
             var user_id
             var loginPassword
-                this.props.users.map((user) =>
+                this.props.users.forEach((user) =>
                     {if(user.id === this.state.idIn)
                     {
                         user_id = user.id
