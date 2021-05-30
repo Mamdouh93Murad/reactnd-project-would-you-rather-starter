@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import { Redirect } from 'react-router-dom'
-import { Button, Input } from 'semantic-ui-react'
+import { Button, Input, Card } from 'semantic-ui-react'
 export class Login extends Component {
     state = {
         id:'',
@@ -115,18 +115,20 @@ export class Login extends Component {
         return (
             <div>
                     <div  style={{textAlign:'center', display:'flex', margin:'auto', position:'absolute', top:'15%', left:'45%'}}>
-                    <div >
-                        <Button primary id="Login" onClick={this.handleStatus}>Login</Button>
-                    </div>
-                    <div >
-                        <Button primary id="SignUp" onClick={this.handleStatus}>Sign Up</Button>
-                    </div>
+                        <div >
+                            <Button primary id="Login" onClick={this.handleStatus}>Login</Button>
+                        </div>
+                        <div >
+                            <Button primary id="SignUp" onClick={this.handleStatus}>Sign Up</Button>
+                        </div>
                     {this.state.status === false ?
-                (<div style={{textAlign:'center', position:'absolute', top:'120%'}}>
+                (<Card  style={{marginLeft:'-25%',minWidth:'150%',textAlign:'center', position:'absolute', top:'120%'}}>
                 
                     <h1 style={{textAlign: 'center'}}>Choose User</h1>
-                    <div style={{textAlign : 'center'}}>
+                    <div  style={{ textAlign : 'center'}}>
                         <Dropdown
+                            
+                            className='ui form small'
                             placeholder='Choose User'
                             selectOnBlur={false}
                             selection
@@ -136,7 +138,7 @@ export class Login extends Component {
                         </div>
                         <div style={{textAlign : 'center'}}>
                         <Input
-                            style={{margin:'5px'}}
+                            style={{width:'70%',margin:'5px'}}
                             name ='password-in'
                             className="user-input"
                             type="password"
@@ -145,21 +147,19 @@ export class Login extends Component {
                             onChange={this.handleChangeIn}
                         />  
                         <div style={{textAlign:'center'}}>
-                            <Button primary style={{margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</Button>
+                            <Button primary style={{width:'70%',margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</Button>
                         </div>
                     </div>
-                    </div>)
+                    </Card>)
                 :
-                (<div style={{textAlign:'center', position:'absolute', top:'120%'}}>
+                (<Card style={{marginLeft:'-25%',minWidth:'150%',textAlign:'center', position:'absolute', top:'120%'}}>
                     <h1 style={{textAlign:'center'}}>To Sign Up</h1>
-            <div style={{textAlign:'center', justifyContent: 'space-around'}}>
-                <h3>Enter User Details</h3>
-            </div>
-            <div style={{textAlign:'center', justifyContent: 'space-evenly'}}>
-                <div className="new-user">
-                    
+            
+                <div className="new-user">       
+                    <h3>Enter User Details</h3>
+            
                     <Input
-                        style={{margin:'5px'}}
+                        style={{width:'70%',margin:'5px'}}
                         name='id'
                         className="user-input"
                         type="text"
@@ -167,10 +167,10 @@ export class Login extends Component {
                         value={this.state.id}
                      onChange={this.handleChangeUp}
                      />   
-                </div>
-                <div className="new-user">
+                
+                
                     <Input
-                        style={{margin:'5px'}}
+                        style={{width:'70%',margin:'5px'}}
                         name ='name'
                         className="user-input"
                         type="text"
@@ -178,10 +178,10 @@ export class Login extends Component {
                         value={this.state.name}
                         onChange={this.handleChangeUp}
                     />
-                </div>
-                <div className="new-user">
+                
+                
                     <Input
-                        style={{margin:'5px'}}
+                        style={{width:'70%',margin:'5px'}}
                         name ='password-up'
                         className="user-input"
                         type="password"
@@ -189,10 +189,10 @@ export class Login extends Component {
                         value={this.state.passwordUp}
                         onChange={this.handleChangeUp}
                     />   
-                </div>
-                <div className="new-user">
+                
+                
                     <Input
-                        style={{margin:'5px'}}
+                        style={{width:'70%',margin:'5px'}}
                         name ='avatarURL'
                         className="user-input"
                         type="text"
@@ -200,12 +200,13 @@ export class Login extends Component {
                         value={this.state.avatarURL}
                         onChange={this.handleChangeUp}
                     />   
+                
+            </div>
+                <div style={{textAlign:'center'}}>
+                    <Button primary style={{width:'70%',margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</Button>
                 </div>
-            </div>
-            <div style={{textAlign:'center'}}>
-                <Button primary style={{margin:'5px'}} disabled={(this.state.id.length === 0 || this.state.name.length === 0 || this.state.passwordUp.length === 0 || this.state.avatarURL.length === 0)} type="Submit"  onClick={this.handleSubmitUp}>Submit</Button>
-            </div>
-                </div>)
+           
+                </Card>)
                 }
                 </div>
 

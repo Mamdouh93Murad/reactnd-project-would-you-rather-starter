@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
 
-import { Button, Container, Card } from 'semantic-ui-react'
+import { Button, Card } from 'semantic-ui-react'
 
 export class Unanswered extends Component {
     state = 

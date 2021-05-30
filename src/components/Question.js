@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import Unanswered from './Unanswered'
 import ErrorPage from './ErrorPage'
 
-import { Button, Container, Card } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 export function Question({authedUser, questions}) {
     var condition = null
     var path = null

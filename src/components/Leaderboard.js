@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { Button, Container, Card } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 

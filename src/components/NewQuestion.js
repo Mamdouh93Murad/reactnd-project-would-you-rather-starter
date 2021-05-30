@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
-import { Button, Container, Input, Card } from 'semantic-ui-react'
+import { Button,  Input, Card } from 'semantic-ui-react'
 export class NewQuestion extends Component {
     state = {
         OptionOne:'',
@@ -67,7 +67,7 @@ export class NewQuestion extends Component {
                     </div>
                 </div>
                 <div style={{textAlign:'center'}}>
-                    <Button style={{color:'green'}} disabled={this.state.OptionOne.length === 0 || this.state.OptionTwo.length === 0} type="Submit"  onClick={this.handleSubmit}>Submit</Button>
+                    <Button positive  disabled={this.state.OptionOne.length === 0 || this.state.OptionTwo.length === 0} type="Submit"  onClick={this.handleSubmit}>Submit</Button>
                 </div>
             </Card>
             
