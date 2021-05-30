@@ -45,7 +45,7 @@ export class Unanswered extends Component {
                 <h1 style={{textAlign:'center'}}>Poll Details</h1>
                 {questions.map((question) =>
                     question.id === id ?
-                    (<Card color='blue' key={question.id} style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px', marginBottom:'50px'}}>
+                    (<Card color='red' key={question.id} style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px', marginBottom:'50px'}}>
                                 
                     <h1 key={question.author}>Asked By: {question.author} </h1>
                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>

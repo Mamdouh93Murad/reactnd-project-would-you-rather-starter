@@ -8,7 +8,7 @@ export class Leaderboard extends Component {
     render() {
         const {users} = this.props
         return (
-            <div>
+            <div style={{paddingBottom:'50px'}}>
 
             <h1 style={{textAlign : 'center'}}>Leaderboard</h1>
                 <div style={{textAlign : 'center', border:'1px, solid, black'}}>

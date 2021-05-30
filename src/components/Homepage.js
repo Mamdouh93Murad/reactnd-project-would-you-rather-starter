@@ -56,39 +56,41 @@ export class HomePage extends Component {
                 <h1 style={{textAlign : 'center', marginBottom:'20px'}}>Home Page</h1>
                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                     <div >
-                        <Button primary id="unanswered" onClick={this.handleChange}>Unanswered Questions</Button>
+                        <Button  id="unanswered" onClick={this.handleChange}>Unanswered Questions</Button>
                     </div>
                     <div >
-                        <Button primary id="answered" onClick={this.handleChange}>Answered Questions</Button>
+                        <Button  id="answered" onClick={this.handleChange}>Answered Questions</Button>
                     </div>
                 </div>
-                <div>
+                <div >
                 {this.state.status === false ? 
                 (
                     unanswered.length !== 0? 
                     (   
-                        <Container >            
+                        <Container style={{paddingBottom:'50px'}}>            
                             <div  style={{textAlign:'center', justifyContent: 'space-around'}}>
                                 <h1 style={{marginBottom:'20px', color:'red'}}>Unanswered Questions</h1>
                             </div>
                             {unanswered.map((question) => 
                             <Card color='red' key={question.id} style={{textAlign:'center', width:'50%', margin:'auto', paddingBottom:'50px', paddingTop:'50px', marginBottom:'50px'}}>
                                 
-                                <h1 key={question.author}>Asked By: {question.author} </h1>
+                                <h1 key={question.author}>Asked By:  </h1>
+                                <h2>{question.author}</h2>
                                 <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         
-                                        <Button primary disabled name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
+                                        <Button  disabled name="OptionOne" value={['optionOne', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionOne.text}
                                         </Button>
 
-                                        <div>
-                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: false,},}}>Click to Vote</Link>
-                                        </div>
 
-                                        <Button primary disabled name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
+                                        <Button  disabled name="OptionTwo" value={['optionTwo', question.id, authedUser]} onClick={this.handleChoice}>
                                         {question.optionTwo.text}
                                         </Button>
+                                </div>
+                                
+                                <div>
+                                    <Link  to={{pathname: "/Questions/"+question.id,state: {condition: false,},}}><Button primary style={{marginTop:'20px'}}>Click to Vote</Button></Link>
                                 </div>
 
                             </Card>
@@ -107,14 +109,15 @@ export class HomePage extends Component {
                 (
                     answered.length !== 0 ? 
                     (   
-                        <Container >            
+                        <Container style={{paddingBottom:'50px'}}>            
                             <div  style={{textAlign:'center', justifyContent: 'space-around'}}>
                                 <h1 style={{marginBottom:'20px', color:'Purple'}}>Answered Questions</h1>
                             </div>
                             {answered.map((question) => 
                                 question.optionOne.votes.includes(authedUser) ?
                                 (<Card color='purple' key={question.id}  style={{textAlign:'center', width:'50%', margin:'auto',marginBottom:'50px', paddingBottom:'50px', paddingTop:'50px'}}>
-                                    <h1 key={question.author}>Asked By: {question.author} </h1>
+                                    <h1 key={question.author}>Asked By:  </h1>
+                                    <h2>{question.author}</h2>
                                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         <div  >
@@ -130,14 +133,15 @@ export class HomePage extends Component {
                                         </div>
                                     </div>
                                         <div>
-                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><span>Poll Link</span></Link>
+                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><Button>Poll Link</Button></Link>
                                         </div>
                                         <h5 >Total Votes : {question.optionTwo.votes.length+question.optionOne.votes.length}</h5>
 
                                 </Card>)
                                 :
                                 (<Card color='purple' key={question.id} style={{textAlign:'center',  width:'50%', margin:'auto', marginBottom:'50px', paddingBottom:'50px', paddingTop:'50px'}}>
-                                    <h1 key={question.author}>Asked By: {question.author} </h1>
+                                    <h1 key={question.author}>Asked By:  </h1>
+                                    <h2>{question.author}</h2>
                                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                                         <div  >
@@ -156,7 +160,7 @@ export class HomePage extends Component {
                                     <h5 >Total Votes : {question.optionTwo.votes.length+question.optionOne.votes.length}</h5>
 
                                         <div>
-                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><span>Poll Link</span></Link>
+                                            <Link to={{pathname: "/Questions/"+question.id,state: {condition: true,},}}><Button>Poll Link</Button></Link>
                                         </div>
                                 </Card>)
     

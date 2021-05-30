@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import Unanswered from './Unanswered'
 import ErrorPage from './ErrorPage'
-
+import { Button } from 'semantic-ui-react'
 import { Card } from 'semantic-ui-react'
 export function Question({authedUser, questions}) {
     var condition = null
@@ -32,18 +32,18 @@ export function Question({authedUser, questions}) {
                 (questions.map((question) =>
                 question.id === id ?
                 (question.optionOne.votes.includes(authedUser) ?
-                (<Card key={question.id}  style={{textAlign:'center', border:'solid', width:'50%', margin:'auto'}}>
+                (<Card key={question.id} color='purple' style={{textAlign:'center',  width:'50%', margin:'auto'}}>
                     <h1 key={question.author}>Asked By: {question.author} </h1>
                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                         <div  >
-                            <h3 key={question.optionOne.text} style={{color:'blue', textDecoration:'underline', fontStyle: 'italic'}}>{question.optionOne.text} </h3>
+                            <Button primary key={question.optionOne.text} /*style={{color:'blue', textDecoration:'underline', fontStyle: 'italic'}}*/>{question.optionOne.text} </Button>
                             <h4 key={question.optionOne.votes.length}>{Math.round(((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
                             <h6>Votes : {question.optionOne.votes.length}</h6>
                         </div>
 
                         <div >
-                            <h3 key={question.optionTwo.text}>{question.optionTwo.text} </h3>
+                            <Button  key={question.optionTwo.text}>{question.optionTwo.text} </Button>
                             <h4 key={question.optionTwo.votes.length}>{Math.round(((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
                             <h6>Votes : {question.optionTwo.votes.length}</h6>
                         </div>
@@ -56,13 +56,13 @@ export function Question({authedUser, questions}) {
                     <h2 style={{textAlign:'center'}}>Would You Rather ?</h2>
                     <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                         <div  >
-                            <h3 key={question.optionOne.text} >{question.optionOne.text} </h3>
+                            <Button key={question.optionOne.text} >{question.optionOne.text} </Button>
                             <h4 key={question.optionOne.votes.length}>{Math.round(((question.optionOne.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
                             <h6>Votes : {question.optionOne.votes.length}</h6>
                         </div>
 
                         <div >
-                            <h3 key={question.optionTwo.text} style={{color:'blue', textDecoration:'underline', fontStyle: 'italic'}}>{question.optionTwo.text}</h3>
+                            <Button primary key={question.optionTwo.text} /*style={{color:'blue', textDecoration:'underline', fontStyle: 'italic'}}*/>{question.optionTwo.text}</Button>
                             <h4 key={question.optionTwo.votes.length}>{Math.round(((question.optionTwo.votes.length) / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100)}%</h4>
                             <h6>Votes : {question.optionTwo.votes.length}</h6>
                         </div>
