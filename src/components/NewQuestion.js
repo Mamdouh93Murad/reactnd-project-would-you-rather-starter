@@ -10,13 +10,7 @@ export class NewQuestion extends Component {
         OptionTwo:'',
         toHome: false
       }
-      handleChange = (event) => {
-        if (event.target.name === 'OptionOne') {
-            this.setState({OptionOne:event.target.value})
-          } else {
-            this.setState({OptionTwo: event.target.value})
-          }
-      }
+
       handleSubmit = (event) => {
         event.preventDefault()
         const{dispatch} = this.props
@@ -51,7 +45,7 @@ export class NewQuestion extends Component {
                             type="text"
                             placeholder="Enter Option One"
                             value={OptionOne}
-                         onChange={this.handleChange}
+                         onChange={(event) => this.setState({OptionOne:event.target.value})}
                          />   
                     </div>
                     <h3>OR</h3>
@@ -62,7 +56,7 @@ export class NewQuestion extends Component {
                             type="text"
                             placeholder="Enter Option Two"
                             value={OptionTwo}
-                            onChange={this.handleChange}
+                            onChange={(event) => this.setState({OptionTwo:event.target.value})}
                         />   
                     </div>
                 </div>

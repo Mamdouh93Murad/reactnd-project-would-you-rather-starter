@@ -18,23 +18,7 @@ export class Login extends Component {
         toHome: false,
         status: true
       }
-      handleChangeUp = (event) => {
-        if (event.target.name === 'id') {
-            this.setState({id:event.target.value})
-          } else if (event.target.name === 'name'){
-            this.setState({name: event.target.value})
-          } else if (event.target.name === 'password-up'){
-            this.setState({passwordUp: event.target.value})
-          }
-          else if (event.target.name === 'avatarURL'){
-            this.setState({avatarURL: event.target.value})
-          }
-      }
-      handleChangeIn = (event) => {
-        if (event.target.name === 'password-in'){
-            this.setState({password: event.target.value})
-        }
-    }
+
 
       handleSubmitUp = (event) => {
         event.preventDefault()
@@ -78,27 +62,7 @@ export class Login extends Component {
                 
         
     }  
-    handleStatus = (event) =>
-    {
-        if(event.target.id === 'Login')
-        {
-            this.setState(() => ({
-                status: false
-            }))
-            // console.log(this.state.status)
-        }
-        else
-        {
-            this.setState(() => ({
-                status : true
-            }))
-            // console.log(this.state.status)
-        }
-    }
-    handleChange = (event,data) => {
-        event.preventDefault()
-        this.setState({idIn: data.value})
-    }  
+   
     render() {
         const { users} = this.props
         const friendOptions = []
@@ -116,10 +80,10 @@ export class Login extends Component {
             <div>
                     <div  style={{textAlign:'center', display:'flex', margin:'auto', position:'absolute', top:'15%', left:'45%'}}>
                         <div >
-                            <Button primary id="Login" onClick={this.handleStatus}>Login</Button>
+                            <Button primary id="Login" onClick={()=> this.setState({status:false})}>Login</Button>
                         </div>
                         <div >
-                            <Button positive id="SignUp" onClick={this.handleStatus}>Sign Up</Button>
+                            <Button positive id="SignUp" onClick={()=> this.setState({status:true})}>Sign Up</Button>
                         </div>
                     {this.state.status === false ?
                 (<Card color='blue' style={{marginLeft:'-25%',minWidth:'150%',textAlign:'center', position:'absolute', top:'120%'}}>
@@ -132,7 +96,7 @@ export class Login extends Component {
                             placeholder='Choose User'
                             selectOnBlur={false}
                             selection
-                            onChange={this.handleChange}
+                            onChange={(event,data)=> event.preventDefault() + this.setState({idIn: data.value})}
                             options={friendOptions}
                         />
                         </div>
@@ -144,7 +108,7 @@ export class Login extends Component {
                             type="password"
                             placeholder="Password"
                             value={this.state.password}
-                            onChange={this.handleChangeIn}
+                            onChange={(event) => this.setState({password: event.target.value})}
                         />  
                         <div style={{textAlign:'center'}}>
                             <Button primary style={{width:'70%',margin:'5px'}} disabled={(this.state.password.length === 0)} type="Submit"  onClick={this.handleSubmitIn}>Submit</Button>
@@ -165,7 +129,7 @@ export class Login extends Component {
                         type="text"
                         placeholder="User Name"
                         value={this.state.id}
-                     onChange={this.handleChangeUp}
+                     onChange={(event) => this.setState({id:event.target.value})}
                      />   
                 
                 
@@ -176,7 +140,7 @@ export class Login extends Component {
                         type="text"
                         placeholder="Real Name"
                         value={this.state.name}
-                        onChange={this.handleChangeUp}
+                        onChange={(event) => this.setState({name: event.target.value})}
                     />
                 
                 
@@ -187,7 +151,7 @@ export class Login extends Component {
                         type="password"
                         placeholder="Password"
                         value={this.state.passwordUp}
-                        onChange={this.handleChangeUp}
+                        onChange={(event) => this.setState({passwordUp: event.target.value})}
                     />   
                 
                 
@@ -198,7 +162,7 @@ export class Login extends Component {
                         type="text"
                         placeholder="AvatarURL"
                         value={this.state.avatarURL}
-                        onChange={this.handleChangeUp}
+                        onChange={(event) => this.setState({avatarURL: event.target.value})}
                     />   
                 
             </div>

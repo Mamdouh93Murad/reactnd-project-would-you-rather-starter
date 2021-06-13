@@ -12,40 +12,7 @@ export class HomePage extends Component {
         answer: '',
         status : false
     }
-    handleChange = (event) =>
-    {
-        if(event.target.id === 'unanswered')
-        {
-            this.setState(() => ({
-                status: false
-            }))
-            // console.log(this.state.status)
-        }
-        else
-        {
-            this.setState(() => ({
-                status : true
-            }))
-            // console.log(this.state.status)
-        }
-    }
-    // handleChoice = (event) =>
-    // {
-    //     const str = event.target.value
-    //     const array = str.split(",")
-    //     this.setState(() => ({
-    //         qid:array[1],
-    //         answer:array[0],
-    //         authedUser:array[2],
-    //     }))
-    // }
-    // componentDidUpdate(prevPros, prevState)
-    // {
-    //     if(prevState.qid !== this.state.qid)
-    //     {
-    //         this.props.dispatch(handleAnswerQuestion(this.state.authedUser, this.state.qid, this.state.answer))
-    //     }
-    // }
+
         
     
     render() { 
@@ -56,10 +23,10 @@ export class HomePage extends Component {
                 <h1 style={{textAlign : 'center', marginBottom:'20px'}}>Home Page</h1>
                 <div  style={{textAlign:'center', display:'flex', justifyContent: 'space-around'}}>
                     <div >
-                        <Button  id="unanswered" onClick={this.handleChange}>Unanswered Questions</Button>
+                        <Button  id="unanswered" onClick={() => this.setState({status:false})}>Unanswered Questions</Button>
                     </div>
                     <div >
-                        <Button  id="answered" onClick={this.handleChange}>Answered Questions</Button>
+                        <Button  id="answered" onClick={() => this.setState({status:true})}>Answered Questions</Button>
                     </div>
                 </div>
                 <div >
